@@ -1,0 +1,214 @@
+<section
+  class="py-8 px-4 w-full bg-gradient-to-br from-green-600 via-green-500 to-green-400 flex items-center justify-center min-h-screen"
+>
+  <div class="w-full max-w-md bg-white shadow-lg rounded-xl">
+    <div class="p-4 space-y-4">
+      <h2 class="text-xl font-bold text-center text-gray-800">
+        Calculadora de Bônus
+      </h2>
+
+      <!-- Vehicle Selector -->
+      <div class="grid grid-cols-2 gap-4 mb-4">
+        <button
+          (click)="selectedVehicle = 'motorcycle'"
+          class="cursor-pointer flex flex-col items-center justify-center p-4 rounded-xl transition-all duration-200 border-2 text-sm font-medium"
+          [class.bg-green-600]="selectedVehicle === 'motorcycle'"
+          [class.text-white]="selectedVehicle === 'motorcycle'"
+          [class.border-green-600]="selectedVehicle === 'motorcycle'"
+          [class.shadow-lg]="selectedVehicle === 'motorcycle'"
+          [class.bg-white]="selectedVehicle !== 'motorcycle'"
+          [class.text-gray-700]="selectedVehicle !== 'motorcycle'"
+          [class.border-gray-200]="selectedVehicle !== 'motorcycle'"
+          [class.hover:border-green-400]="selectedVehicle !== 'motorcycle'"
+        >
+          Moto
+        </button>
+        <button
+          (click)="selectedVehicle = 'car'"
+          class="cursor-pointer flex flex-col items-center justify-center p-4 rounded-xl transition-all duration-200 border-2 text-sm font-medium"
+          [class.bg-green-600]="selectedVehicle === 'car'"
+          [class.text-white]="selectedVehicle === 'car'"
+          [class.border-green-600]="selectedVehicle === 'car'"
+          [class.shadow-lg]="selectedVehicle === 'car'"
+          [class.bg-white]="selectedVehicle !== 'car'"
+          [class.text-gray-700]="selectedVehicle !== 'car'"
+          [class.border-gray-200]="selectedVehicle !== 'car'"
+          [class.hover:border-green-400]="selectedVehicle !== 'car'"
+        >
+          Carro
+        </button>
+      </div>
+
+      <!-- Vehicle Info -->
+      <div
+        class="bg-green-50 p-4 rounded-lg border border-green-200 mb-4 flex items-start"
+      >
+        <div class="text-green-600 mt-1 mr-3 flex-shrink-0">i</div>
+        <div>
+          <p class="text-green-800 font-medium">
+            Veículo selecionado:
+            <span class="font-bold">{{
+              selectedVehicle === "motorcycle" ? "Moto" : "Carro"
+            }}</span>
+          </p>
+          <p class="text-green-600 text-sm mt-1">
+            {{
+              selectedVehicle === "motorcycle"
+                ? "Moto: meta diária de 5 pontos. Cada ponto extra soma R$ 15."
+                : "Carro: meta diária de 6 pontos. Cada ponto extra soma R$ 15."
+            }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="space-y-2">
+        <div class="grid grid-cols-3 gap-2">
+          <select
+            [(ngModel)]="form.days"
+            name="days"
+            class="col-span-3 p-2 border rounded text-sm"
+          >
+            <option value="">
+              {{
+                selectedVehicle === "car"
+                  ? "Selecione o período"
+                  : "Selecione o serviço"
+              }}
+            </option>
+            <option *ngFor="let opt of options" [value]="opt.value">
+              {{ opt.label }} ({{ opt.points }} pts)
+            </option>
+          </select>
+
+          <input
+            type="number"
+            min="0"
+            [(ngModel)]="form.totalCount"
+            name="totalCount"
+            [placeholder]="
+              selectedVehicle === 'car' ? 'Total de motos' : 'Total de serviços'
+            "
+            [class.col-span-1]="selectedVehicle === 'car'"
+            [class.col-span-2]="selectedVehicle !== 'car'"
+            class="p-2 border rounded text-sm"
+          />
+
+          <input
+            *ngIf="selectedVehicle === 'car'"
+            type="number"
+            min="0"
+            [(ngModel)]="form.paidCount"
+            name="paidCount"
+            placeholder="Pagas"
+            class="col-span-1 p-2 border rounded text-sm"
+          />
+
+          <button
+            (click)="handleAddOrEditEntry()"
+            class="col-span-1 text-sm bg-green-600 hover:bg-green-700 text-white rounded"
+          >
+            {{ editId ? "Salvar" : "Adicionar" }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Entries Table -->
+      <div class="overflow-x-auto" *ngIf="entries.length > 0">
+        <table
+          class="w-full text-sm text-left border rounded-md overflow-hidden"
+        >
+          <thead class="bg-green-100 text-green-900">
+            <tr>
+              <th class="p-2">Período/Serviço</th>
+              <th class="p-2 text-center">
+                {{ selectedVehicle === "car" ? "Pagas/Total" : "Serviços" }}
+              </th>
+              <th class="p-2 text-center">Ações</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y">
+            <tr *ngFor="let entry of entries">
+              <td class="p-2">{{ getLabel(entry.days) }}</td>
+              <td class="p-2 text-center">
+                {{
+                  selectedVehicle === "car"
+                    ? entry.paidCount + "/" + entry.totalCount
+                    : entry.totalCount
+                }}
+              </td>
+              <td class="p-2 text-center flex justify-center gap-2">
+                <button (click)="handleEdit(entry)" title="Editar">
+                  <span class="text-blue-500 hover:text-blue-700">Editar</span>
+                </button>
+                <button (click)="handleDelete(entry.id)" title="Remover">
+                  <span class="text-red-500 hover:text-red-700">Remover</span>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Info Box -->
+      <div class="bg-blue-50 p-3 rounded-lg">
+        <div class="flex items-start gap-2">
+          <div class="text-blue-500 mt-1 flex-shrink-0">i</div>
+          <div class="text-xs">
+            <p class="font-medium">Como funciona o bônus:</p>
+            <ul class="list-disc pl-4 space-y-1 mt-1">
+              <li>{{ minPoints }} pontos = R$ 40,00</li>
+              <li>Cada ponto adicional = +R$ 15,00</li>
+              <li>
+                Exemplo: {{ minPoints + 1 }} pontos = R$ 55,00 |
+                {{ minPoints + 2 }} pontos = R$ 70,00
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Calculate Button -->
+      <button
+        class="w-full bg-green-600 hover:bg-green-700 text-white rounded py-2"
+        (click)="handleCalculate()"
+      >
+        Calcular Bônus
+      </button>
+
+      <!-- Results -->
+      <div class="space-y-3" *ngIf="entries.length > 0">
+        <div class="bg-green-50 p-3 rounded-lg border border-green-100 text-sm">
+          <h3
+            class="font-semibold text-green-800 flex items-center gap-2 text-sm"
+          >
+            {{ selectedVehicle === "car" ? "Carro" : "Moto" }}
+            Resumo
+          </h3>
+          <p>
+            {{
+              selectedVehicle === "car"
+                ? "Motos registradas:"
+                : "Serviços registrados:"
+            }}
+            <strong>{{ totalMotos }}</strong>
+          </p>
+          <p>
+            Pontos totais: <strong>{{ totalPoints }}</strong>
+          </p>
+          <p class="text-base font-bold text-green-700">
+            Bônus: {{ valueToBRL(bonus) }}
+          </p>
+        </div>
+
+        <div
+          class="bg-yellow-50 text-yellow-800 p-2 rounded-lg text-xs"
+          *ngIf="totalPoints < minPoints"
+        >
+          Você precisa de {{ minPoints - totalPoints }} ponto(s) adicional(is)
+          para receber o bônus mínimo.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
