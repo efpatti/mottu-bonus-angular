@@ -1,15 +1,39 @@
 <section
-  class="section w-full min-h-screen bg-red-50 py-12 px-4 sm:px-6 lg:px-8 flex items-center justify-center"
+  class="w-full h-screen flex items-center justify-center py-10 px-4 sm:px-6 sm:h-[80vh]"
 >
-  <div class="w-full max-w-2xl mx-auto">
-    <h3 class="text-3xl sm:text-4xl font-bold text-red-800 mb-8 text-center">
-      Fatores de Penalização
-    </h3>
-    <ul class="list-disc list-inside space-y-4 text-lg text-red-900">
-      <li>Faltas não justificadas.</li>
-      <li>Descumprimento das regras do programa.</li>
-      <li>Baixa avaliação dos clientes.</li>
-      <li>Outros comportamentos inadequados.</li>
+  <div
+    class="max-w-2xl w-full mx-auto rounded-xl shadow-md border border-red-200 bg-gradient-to-r from-yellow-100 to-red-100 p-8"
+  >
+    <div class="flex items-center justify-center mb-4">
+      <fa-icon
+        [icon]="faAlertTriangle"
+        class="text-yellow-500 text-xl mr-2"
+      ></fa-icon>
+      <h2 class="text-xl font-bold text-red-700">Fatores que Afetam o Bônus</h2>
+    </div>
+    <ul class="space-y-3">
+      <li
+        *ngFor="let item of penaltyFactors"
+        class="flex items-center justify-center"
+      >
+        <span class="bg-red-200 text-red-800 rounded-full p-1 mr-3">
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              [attr.stroke-width]="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </span>
+        <span class="text-gray-700">{{ item }}</span>
+      </li>
     </ul>
+    <app-navigation-buttons [showOnlyPrevious]="true"></app-navigation-buttons>
   </div>
 </section>

@@ -1,0 +1,17 @@
+<div class="flex justify-between mt-8">
+  <button
+    *ngIf="showOnlyPrevious || showBoth"
+    class="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors"
+    (click)="handlePreviousLevel()"
+  >
+    Anterior
+  </button>
+
+  <button
+    *ngIf="!showOnlyPrevious && showBoth"
+    class="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+    (click)="handleNextLevel()"
+  >
+    Próximo
+  </button>
+</div>

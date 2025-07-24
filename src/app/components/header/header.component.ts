@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { scrollToTop } from '../../utils/scroll-to-top';
 import { NavigationService } from '../../services/navigation.service';
 import { Router } from '@angular/router';
@@ -14,7 +14,7 @@ import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, DoCheck {
   steps: any[] = [];
   currentLevel = 0;
   mobileMenuOpen = false;
@@ -29,6 +29,14 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.steps = this.navigationService.getSteps();
     this.currentLevel = this.navigationService.getCurrentLevel();
+  }
+
+  ngDoCheck(): void {
+    // Atualiza o nível ativo sempre que houver mudança
+    const newLevel = this.navigationService.getCurrentLevel();
+    if (newLevel !== this.currentLevel) {
+      this.currentLevel = newLevel;
+    }
   }
 
   get currentStepNumber(): number {

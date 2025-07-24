@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { nextLevel } from '../../utils/level-navigation';
+import { handleNextLevelGlobal } from '../../utils/handle-next-level';
 import { NavigationService } from '../../services/navigation.service';
 
 @Component({
@@ -11,6 +11,6 @@ export class IntroSectionComponent {
   constructor(private navigationService: NavigationService) {}
 
   handleNextLevel(): void {
-    nextLevel(this.navigationService);
+    handleNextLevelGlobal(this.navigationService);
   }
 }
