@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { scrollToTop } from '../../utils/scroll-to-top';
 import { NavigationService } from '../../services/navigation.service';
 import { Router } from '@angular/router';
 
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, MatIconModule],
+  imports: [CommonModule, MatIconModule, FontAwesomeModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
@@ -15,6 +18,8 @@ export class HeaderComponent implements OnInit {
   steps: any[] = [];
   currentLevel = 0;
   mobileMenuOpen = false;
+  faBars = faBars;
+  faXmark = faXmark;
 
   constructor(
     private navigationService: NavigationService,
@@ -38,11 +43,13 @@ export class HeaderComponent implements OnInit {
     this.navigationService.navigateTo(level);
     this.currentLevel = this.navigationService.getCurrentLevel();
     this.updateRoute();
+    scrollToTop();
   }
 
-  navigateToStep(level: number): void {
-    this.navigateTo(level);
+  navigateToStep(idx: number): void {
+    this.navigateTo(idx);
     this.toggleMobileMenu();
+    scrollToTop();
   }
 
   toggleMobileMenu(): void {
@@ -53,8 +60,8 @@ export class HeaderComponent implements OnInit {
     const routes = [
       'intro',
       'benefits',
-      'eligibility',
-      'eligibility',
+      'eligibility1',
+      'eligibility2',
       'rules',
       'calculator',
       'calculator',

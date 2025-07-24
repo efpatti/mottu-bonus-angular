@@ -7,10 +7,11 @@ import { MobileMenuComponent } from './mobile-menu.component';
 import { ErrorSectionComponent } from './error-section.component';
 import { IntroSectionComponent } from './components/intro-section/intro-section.component';
 import { BenefitsSectionComponent } from './components/benefits-section/benefits-section.component';
-import { EligibilityStepsComponent } from './components/eligibility-steps/eligibility-steps.component';
+import { EligibilityStepsComponent } from './components/eligibility-steps-1/eligibility-steps-1.component';
 import { BonusRulesComponent } from './components/bonus-rules/bonus-rules.component';
 import { BonusCalculatorComponent } from './components/bonus-calculator/bonus-calculator.component';
 import { PenaltyFactorsComponent } from './components/penalty-factors/penalty-factors.component';
+import { EligibilitySteps2Component } from './components/eligibility-steps-2/eligibility-steps-2.component';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +26,7 @@ import { PenaltyFactorsComponent } from './components/penalty-factors/penalty-fa
     BonusRulesComponent,
     BonusCalculatorComponent,
     PenaltyFactorsComponent,
+    EligibilitySteps2Component,
   ],
   templateUrl: './app.html',
   styleUrl: './app.css',

@@ -6,7 +6,7 @@
       <!-- Logo -->
       <div class="flex items-center">
         <img
-          src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMzIiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojMTZhMzRhO308L3N0eWxlPjwvZGVmcz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0wLDBoMTIwdjMySDB6Ii8+PHRleHQgeD0iMjAiIHk9IjIyIiBmaWxsPSJ3aGl0ZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXdlaWdodD0iYm9sZCIgZm9udC1zaXplPSIxNiI+TW90dHU8L3RleHQ+PC9zdmc+"
+          src="mottu_logo.png"
           alt="Mottu Logo"
           width="120"
           height="32"
@@ -35,13 +35,16 @@
           </button>
         </ng-container>
       </div>
-      <!-- Botão do menu mobile -->
       <button
         id="mobile-menu-button"
-        class="md:hidden p-2 text-gray-400 hover:text-white"
         (click)="toggleMobileMenu()"
+        class="md:hidden p-2 text-gray-400"
+        aria-label="Menu"
       >
-        <i class="bx bx-menu text-2xl"></i>
+        <fa-icon
+          [icon]="mobileMenuOpen ? faXmark : faBars"
+          class="text-xl"
+        ></fa-icon>
       </button>
     </div>
   </div>
