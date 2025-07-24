@@ -8,58 +8,11 @@
       </h2>
 
       <!-- Vehicle Selector -->
-      <div class="grid grid-cols-2 gap-4 mb-4">
-        <button
-          (click)="selectedVehicle = 'motorcycle'"
-          class="cursor-pointer flex flex-col items-center justify-center p-4 rounded-xl transition-all duration-200 border-2 text-sm font-medium"
-          [class.bg-green-600]="selectedVehicle === 'motorcycle'"
-          [class.text-white]="selectedVehicle === 'motorcycle'"
-          [class.border-green-600]="selectedVehicle === 'motorcycle'"
-          [class.shadow-lg]="selectedVehicle === 'motorcycle'"
-          [class.bg-white]="selectedVehicle !== 'motorcycle'"
-          [class.text-gray-700]="selectedVehicle !== 'motorcycle'"
-          [class.border-gray-200]="selectedVehicle !== 'motorcycle'"
-          [class.hover:border-green-400]="selectedVehicle !== 'motorcycle'"
-        >
-          Moto
-        </button>
-        <button
-          (click)="selectedVehicle = 'car'"
-          class="cursor-pointer flex flex-col items-center justify-center p-4 rounded-xl transition-all duration-200 border-2 text-sm font-medium"
-          [class.bg-green-600]="selectedVehicle === 'car'"
-          [class.text-white]="selectedVehicle === 'car'"
-          [class.border-green-600]="selectedVehicle === 'car'"
-          [class.shadow-lg]="selectedVehicle === 'car'"
-          [class.bg-white]="selectedVehicle !== 'car'"
-          [class.text-gray-700]="selectedVehicle !== 'car'"
-          [class.border-gray-200]="selectedVehicle !== 'car'"
-          [class.hover:border-green-400]="selectedVehicle !== 'car'"
-        >
-          Carro
-        </button>
-      </div>
+      <app-vehicle-selector
+        [(selectedVehicle)]="selectedVehicle"
+      ></app-vehicle-selector>
 
       <!-- Vehicle Info -->
-      <div
-        class="bg-green-50 p-4 rounded-lg border border-green-200 mb-4 flex items-start"
-      >
-        <div class="text-green-600 mt-1 mr-3 flex-shrink-0">i</div>
-        <div>
-          <p class="text-green-800 font-medium">
-            Veículo selecionado:
-            <span class="font-bold">{{
-              selectedVehicle === "motorcycle" ? "Moto" : "Carro"
-            }}</span>
-          </p>
-          <p class="text-green-600 text-sm mt-1">
-            {{
-              selectedVehicle === "motorcycle"
-                ? "Moto: meta diária de 5 pontos. Cada ponto extra soma R$ 15."
-                : "Carro: meta diária de 6 pontos. Cada ponto extra soma R$ 15."
-            }}
-          </p>
-        </div>
-      </div>
 
       <!-- Form -->
       <div class="space-y-2">

@@ -3,7 +3,7 @@ import { NavigationService } from './services/navigation.service';
 
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
-import { MobileMenuComponent } from './mobile-menu.component';
+import { BonusCalculationComponent } from './components/bonus-calculation/bonus-calculation.component';
 import { ErrorSectionComponent } from './error-section.component';
 import { IntroSectionComponent } from './components/intro-section/intro-section.component';
 import { BenefitsSectionComponent } from './components/benefits-section/benefits-section.component';
@@ -24,6 +24,7 @@ import { EligibilitySteps2Component } from './components/eligibility-steps-2/eli
     BenefitsSectionComponent,
     EligibilityStepsComponent,
     BonusRulesComponent,
+    BonusCalculationComponent,
     BonusCalculatorComponent,
     PenaltyFactorsComponent,
     EligibilitySteps2Component,

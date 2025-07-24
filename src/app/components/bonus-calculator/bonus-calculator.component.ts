@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { VehicleSelectorComponent } from '../vehicle-selector/vehicle-selector.component';
 import { v4 as uuidv4 } from 'uuid';
 
 interface BikeEntry {
@@ -19,7 +20,7 @@ interface ServiceOption {
 @Component({
   selector: 'app-bonus-calculator',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, VehicleSelectorComponent],
   templateUrl: './bonus-calculator.component.html',
   styleUrls: ['./bonus-calculator.component.scss'],
 })

@@ -12,11 +12,9 @@
       </p>
     </div>
 
-    <app-vehicle-info
-      [selectedVehicle]="selectedVehicle"
-      (vehicleSelected)="onSelectVehicle($event)"
-      [showSelector]="true"
-    ></app-vehicle-info>
+    <app-vehicle-selector
+      [(selectedVehicle)]="selectedVehicle"
+    ></app-vehicle-selector>
 
     <!-- Rules Content -->
     @if (selectedVehicle === 'motorcycle') {

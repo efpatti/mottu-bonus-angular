@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { VehicleInfoComponent } from '../vehicle-info/vehicle-info.component';
+import { VehicleSelectorComponent } from '../vehicle-selector/vehicle-selector.component';
 import { BonusRulesDisplayComponent } from '../bonus-rules-display/bonus-rules-display.component';
 import { NavigationButtonsComponent } from '../navigation-buttons/navigation-buttons.component';
 
@@ -9,7 +9,7 @@ import { NavigationButtonsComponent } from '../navigation-buttons/navigation-but
   standalone: true,
   imports: [
     CommonModule,
-    VehicleInfoComponent,
+    VehicleSelectorComponent,
     BonusRulesDisplayComponent,
     NavigationButtonsComponent,
   ],

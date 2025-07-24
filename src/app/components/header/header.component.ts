@@ -71,7 +71,7 @@ export class HeaderComponent implements OnInit, DoCheck {
       'eligibility1',
       'eligibility2',
       'rules',
-      'calculator',
+      'calculation',
       'calculator',
       'penalties',
     ];
