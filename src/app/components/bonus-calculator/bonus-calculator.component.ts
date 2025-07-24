@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { VehicleSelectorComponent } from '../vehicle-selector/vehicle-selector.component';
+import {
+  FontAwesomeModule,
+  FaIconLibrary,
+} from '@fortawesome/angular-fontawesome';
+import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { v4 as uuidv4 } from 'uuid';
 
 interface BikeEntry {
@@ -10,7 +15,6 @@ interface BikeEntry {
   totalCount: number;
   paidCount: number;
 }
-
 interface ServiceOption {
   label: string;
   value: string;
@@ -20,11 +24,19 @@ interface ServiceOption {
 @Component({
   selector: 'app-bonus-calculator',
   standalone: true,
-  imports: [CommonModule, FormsModule, VehicleSelectorComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    VehicleSelectorComponent,
+    FontAwesomeModule,
+  ],
   templateUrl: './bonus-calculator.component.html',
   styleUrls: ['./bonus-calculator.component.scss'],
 })
 export class BonusCalculatorComponent {
+  constructor(private faLibrary: FaIconLibrary) {
+    faLibrary.addIcons(faPen, faTrash);
+  }
   carOptions: ServiceOption[] = [
     { label: '1-7 dias', value: '1-7', points: 1 },
     { label: '8-15 dias', value: '8-15', points: 2 },

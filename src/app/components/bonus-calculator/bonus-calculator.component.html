@@ -12,8 +12,6 @@
         [(selectedVehicle)]="selectedVehicle"
       ></app-vehicle-selector>
 
-      <!-- Vehicle Info -->
-
       <!-- Form -->
       <div class="space-y-2">
         <div class="grid grid-cols-3 gap-2">
@@ -91,11 +89,21 @@
                 }}
               </td>
               <td class="p-2 text-center flex justify-center gap-2">
-                <button (click)="handleEdit(entry)" title="Editar">
-                  <span class="text-blue-500 hover:text-blue-700">Editar</span>
+                <button (click)="handleEdit(entry)" title="Editar" class="p-1">
+                  <fa-icon
+                    [icon]="['fas', 'pen']"
+                    class="text-blue-500 hover:text-blue-700"
+                  ></fa-icon>
                 </button>
-                <button (click)="handleDelete(entry.id)" title="Remover">
-                  <span class="text-red-500 hover:text-red-700">Remover</span>
+                <button
+                  (click)="handleDelete(entry.id)"
+                  title="Remover"
+                  class="p-1"
+                >
+                  <fa-icon
+                    [icon]="['fas', 'trash']"
+                    class="text-red-500 hover:text-red-700"
+                  ></fa-icon>
                 </button>
               </td>
             </tr>
