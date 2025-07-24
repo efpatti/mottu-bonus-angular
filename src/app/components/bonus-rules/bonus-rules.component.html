@@ -1,15 +1,29 @@
-<section
-  class="section w-full min-h-screen bg-white py-12 px-4 sm:px-6 lg:px-8 flex items-center justify-center"
+<div
+  class="flex flex-col items-center min-h-screen bg-gray-50 py-8 px-4 sm:px-6"
 >
-  <div class="w-full max-w-3xl mx-auto">
-    <h3 class="text-3xl sm:text-4xl font-bold text-green-800 mb-8 text-center">
-      Regras do Bônus
-    </h3>
-    <ul class="list-disc list-inside space-y-4 text-lg text-green-900">
-      <li>O bônus é calculado mensalmente com base no desempenho.</li>
-      <li>É necessário cumprir todos os critérios de elegibilidade.</li>
-      <li>Penalidades podem reduzir o valor do bônus.</li>
-      <li>O valor do bônus é creditado diretamente na sua conta.</li>
-    </ul>
+  <div class="w-full max-w-2xl">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <h1 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">
+        Regras do Bônus por Veículo
+      </h1>
+      <p class="text-gray-600">
+        Selecione seu tipo de veículo para ver as regras específicas
+      </p>
+    </div>
+
+    <app-vehicle-info
+      [selectedVehicle]="selectedVehicle"
+      (vehicleSelected)="onSelectVehicle($event)"
+      [showSelector]="true"
+    ></app-vehicle-info>
+
+    <!-- Rules Content -->
+    @if (selectedVehicle === 'motorcycle') {
+    <app-bonus-rules-display vehicleType="motorcycle"></app-bonus-rules-display>
+    } @if (selectedVehicle === 'car') {
+    <app-bonus-rules-display vehicleType="car"></app-bonus-rules-display>
+    }
   </div>
-</section>
+  <app-navigation-buttons></app-navigation-buttons>
+</div>

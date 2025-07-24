@@ -6,11 +6,12 @@ import {
   faInfoCircle,
   faTrophy,
 } from '@fortawesome/free-solid-svg-icons';
+import { NavigationButtonsComponent } from '../navigation-buttons/navigation-buttons.component';
 
 @Component({
   selector: 'app-eligibility-steps-2',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, FontAwesomeModule, NavigationButtonsComponent],
   templateUrl: './eligibility-steps-2.component.html',
   styleUrls: ['./eligibility-steps-2.component.scss'],
 })

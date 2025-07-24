@@ -9,6 +9,7 @@ import {
   faCheckCircle,
   faExclamationCircle,
 } from '@fortawesome/free-solid-svg-icons';
+import { NavigationButtonsComponent } from '../navigation-buttons/navigation-buttons.component';
 
 interface FiliaisProps {
   unit: string;
@@ -18,7 +19,12 @@ interface FiliaisProps {
 @Component({
   selector: 'app-eligibility-steps-1',
   standalone: true,
-  imports: [CommonModule, FormsModule, FontAwesomeModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    FontAwesomeModule,
+    NavigationButtonsComponent,
+  ],
   templateUrl: './eligibility-steps-1.component.html',
   styleUrls: ['./eligibility-steps-1.component.scss'],
 })
