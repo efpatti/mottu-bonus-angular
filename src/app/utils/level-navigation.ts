@@ -1,4 +1,5 @@
 import { NavigationService } from '../services/navigation.service';
+import { scrollToTop } from './scroll-to-top';
 
 export function nextLevel(navigationService: NavigationService): void {
   const current = navigationService.getCurrentLevel();
@@ -12,5 +13,6 @@ export function previousLevel(navigationService: NavigationService): void {
   const current = navigationService.getCurrentLevel();
   if (current > 0) {
     navigationService.navigateTo(current - 1);
+    scrollToTop();
   }
 }

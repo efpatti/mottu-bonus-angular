@@ -1,10 +1,10 @@
 export function scrollToTop(): void {
   if (typeof window === 'undefined') return;
 
-  // Rola a página principal
+  // Sempre rola a página principal para o topo
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  // Encontra o container com o maior scrollHeight visível
+  // Rola todos os containers scrolláveis visíveis para o topo
   const scrollableElements = Array.from(
     document.querySelectorAll<HTMLElement>('*')
   ).filter((el) => {
@@ -16,12 +16,7 @@ export function scrollToTop(): void {
     );
   });
 
-  // Ordena por scrollHeight (descendente) e scrolla o maior
-  const topScrollable = scrollableElements.sort(
-    (a, b) => b.scrollHeight - a.scrollHeight
-  )[0];
-
-  if (topScrollable) {
-    topScrollable.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+  scrollableElements.forEach((el) => {
+    el.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 }

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { scrollToTop } from '../utils/scroll-to-top';
 
 @Injectable({
   providedIn: 'root',
@@ -44,11 +45,13 @@ export class NavigationService {
     if (this.currentLevel < this.steps.length - 1) {
       this.currentLevel++;
     }
+    scrollToTop();
   }
 
   previousLevel() {
     if (this.currentLevel > 0) {
       this.currentLevel--;
     }
+    scrollToTop();
   }
 }
