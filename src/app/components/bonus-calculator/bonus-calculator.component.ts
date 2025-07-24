@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { VehicleSelectorComponent } from '../vehicle-selector/vehicle-selector.component';
+import { NavigationButtonsComponent } from '../navigation-buttons/navigation-buttons.component';
 import {
   FontAwesomeModule,
   FaIconLibrary,
@@ -29,6 +30,7 @@ interface ServiceOption {
     FormsModule,
     VehicleSelectorComponent,
     FontAwesomeModule,
+    NavigationButtonsComponent,
   ],
   templateUrl: './bonus-calculator.component.html',
   styleUrls: ['./bonus-calculator.component.scss'],
